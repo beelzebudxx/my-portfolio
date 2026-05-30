@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>my portfolio</title>
+<title>for my bebi</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -67,7 +67,7 @@
 
 
                 <p>
-                    Dear,  Kim (may paganito pa e no),
+                    Dear,  Kim (may paganito pa e no)
                 </p>
 
                 <p>
@@ -305,6 +305,55 @@ const noScreen = document.getElementById("noScreen");
 
 const backBtn = document.getElementById("backBtn");
 
+function launchConfetti(){
+
+    const colors = [
+        "#ea3181",
+        "#ff69b4",
+        "#ffc1da",
+        "#ffffff",
+        "#ffb6c1"
+    ];
+
+    for(let i = 0; i < 180; i++){
+
+        const confetti =
+        document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.left =
+        Math.random() * window.innerWidth + "px";
+
+        confetti.style.top = "-20px";
+
+        confetti.style.width =
+        `${6 + Math.random() * 10}px`;
+
+        confetti.style.height =
+        `${6 + Math.random() * 10}px`;
+
+        confetti.style.animationDuration =
+        `${2 + Math.random() * 2}s`;
+
+        confetti.style.setProperty(
+            "--x",
+            `${(Math.random() - 0.5) * 250}px`
+        );
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 4500);
+
+    }
+
+}
+
 seeMoreBtn.addEventListener("click", () => {
 
     courtshipSection.classList.add("show");
@@ -317,7 +366,13 @@ seeMoreBtn.addEventListener("click", () => {
 
 yesBtn.addEventListener("click", () => {
 
+    launchConfetti();
+
+    setTimeout(() => launchConfetti(), 400);
+    setTimeout(() => launchConfetti(), 800);
+
     courtshipQuestion.style.display = "none";
+
     yesScreen.classList.add("show");
 
 });
